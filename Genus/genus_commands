@@ -1,0 +1,16 @@
+read_lib ../Liberty/NangateOCL_slow.lib
+read_hdl mcrb.v
+elaborate
+
+read_sdc mcrb.sdc
+
+syn_generic
+syn_map
+syn_opt
+
+write_hdl > mcrb_syn.v
+
+report_gates > ../report/mcrb_gates.rep
+report_area > ../report/mcrb_area.rep
+report_power > ../report/mcrb_power.rep
+report_timing > ../report/mcrb_timing.rep
