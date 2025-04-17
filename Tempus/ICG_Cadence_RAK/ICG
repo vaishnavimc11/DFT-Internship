@@ -1,0 +1,22 @@
+ICGs in Standard cell library:
+
+Command used: grep -B 5 "clock_gating_integrated_cell" slow.lib | grep "cell (" | sed 's/cell (//;s/) {//' > Cadence_RAK_ICGs.txt
+
+16
+
+TLATNCAX12
+TLATNCAX2
+TLATNCAX20
+TLATNCAX6
+TLATNTSCAX16
+TLATNTSCAX4
+TLATNTSCAX8
+TLATNCAX16
+TLATNTSCAX12
+TLATNTSCAX2
+TLATNTSCAX20
+TLATNTSCAX6
+TLATNCAX4
+TLATNCAX3
+TLATNCAX8
+TLATNTSCAX3
