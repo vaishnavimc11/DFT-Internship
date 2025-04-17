@@ -1,0 +1,35 @@
+EMBEDDED MEMORIES:
+
+read_lib ../lib/slow.lib
+read_lib ../lib/rf_2p_136d.lib { ../lib/rf_2p_256d.lib} { ../lib/rf_2p_512d.lib} { ../lib/sram_sp_16384d.lib} { ../lib/sram_sp_32768d.lib} { ../lib/sram_sp_512d.lib}
+read_verilog ../netlist/cpu_sys.v
+set_top_module
+read_sdc ../sdc/cpu_sys.sdc 
+
+
+#1 To find the instance count of memories in the netlist
+COMMAND: sizeof_collection [get_cells -hierarchical -of_objects "sram_sp*"]
+OUTPUT: 12
+COMMAND: sizeof_collection [get_cells -hierarchical -of_objects "rf_2p*"]
+OUTPUT: 16
+
+Hence, instance count of memories: 28
+
+#2 To find list of memory configurations (i.e., type of memories) that have been instantiated
+The memory configurations that have been instantiated are:
+rf_2p_136d, rf_2p_256d, rf_2p_512p, sram_sp_16384d, sram_sp_32768d, sram_sp_512d.
+
+#3 To find the count of flip-flops in the netlist
+COMMAND: sizeof_collection [all_registers -flops]
+OUTPUT: 61161
+
+#4 To find the total number of instances in the netlist
+COMMAND: sizeof_collection [get_cells -hierarchical]
+OUTPUT: 308179
+
+#5 To find list of all clocks in the netlist and their sources
+COMMAND: sizeof_collection [get_clocks]
+OUTPUT: 24
+
+COMMAND: report_clocks > clocks.rpt
+OUTPUT: clocks.rpt
