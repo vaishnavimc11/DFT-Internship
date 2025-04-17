@@ -1,0 +1,17 @@
+set_context dft -scan
+read_verilog s298_nangate_mapped.v
+read_cell_library ../test_Nangate.mdt
+set_current_design s298
+analyze_control_signals -auto
+add_clock 0 CK
+check_design_rules
+
+create_port SI -dir input
+create_port SO -dir output
+create_port SE -dir input
+
+analyze_scan_chains
+insert_test_logic
+report_scan_chains
+report_scan_cells
+write_design -output_file s298_scan.v -replace
