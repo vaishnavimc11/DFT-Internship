@@ -1,0 +1,14 @@
+Alcazar Error Description:
+
+
+1. The errors were primarily caused by improper line breaks within module instantiations, leading to missing parentheses and semicolons in port connections.
+
+Command used: 
+vim +<line_number> ../netlist/alcazar.v
+
+
+2. Port mismatches were identified in alcazar.v when compared with slow.lib cells, specifically affecting NAND, NOR, and MUX instances.
+
+Command used: 
+perl -i -pe 's/\.A\(/\.AN\(/g if /\bNOR[1-9]BX[1-9]\b/' ../netlist/alcazar.v
+
