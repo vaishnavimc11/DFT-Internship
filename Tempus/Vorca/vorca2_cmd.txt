@@ -1,0 +1,28 @@
+read_lib ../lib/slow.lib
+read_verilog ../netlist/vorca.v
+set load_netlist_ignore_undefined_cell true
+set_top_module vorca 
+read_sdc ../sdc/vorca.sdc 
+
+
+#1 To create a collection of all input ports except the clock port:
+
+set i [all_inputs]
+set ip [remove_from_collection $i clk]
+
+
+#2 To find the endpoints of the input ports
+
+foreach_in_collection input $ip {                                         
++ set endpoints [all_fanout -from $input -endpoints_only]  
++ puts "Input Port: [get_object_name $input]"  
++  puts "Endpoints:[get_object_name $endpoints]" 
++ } > fout
+
+
+#3 To identify all input ports that have a timing path ending at an SI pin:
+
+grep -B1 "/SI" fout > vorca_out.txt
+
+
+
