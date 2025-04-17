@@ -1,0 +1,8 @@
+Input Port: i_agg_su_count_a[31]
+Endpoints:f32_data_reg_0_/SI f32_mux_1_data_reg_31_/D
+--
+Input Port: test_si1
+Endpoints:f32_data_reg_11_/SI
+--
+Input Port: raw_scan_en
+Endpoints:f32_data_reg_11_/SI
